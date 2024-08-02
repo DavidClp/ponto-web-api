@@ -1,5 +1,5 @@
-import { Collaborator } from "../entities/collabotator/collaborator";
+import { Collaborator } from "../entities/collaborator/collaborator";
 
 export interface CollaboratorRepository {
-    create(collaborator: Collaborator): Promise<void>;
+    create(collaborator: Collaborator): Promise<Collaborator>;
 }

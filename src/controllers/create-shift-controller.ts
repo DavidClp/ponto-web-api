@@ -3,9 +3,9 @@ import { Shift } from "../entities/shift/shift";
 import { CreateShiftUserCase } from "../use-cases/createShift/create-shift-user-case";
 
 export class CreateShiftController {
-    constructor(private createdShift: CreateShiftUserCase) {}
+    constructor(private createdShiftUserCase: CreateShiftUserCase) {}
 
-    /*     async handlePontoBatido(req: Request, res: Response) {
+    async handlePontoBatido(req: Request, res: Response) {
         const { collaboratorCode, pointDate } = req.body; // pointDate é a data do turno (entrada ou saída)
 
         // Converte a data do ponto para um objeto Date
@@ -51,5 +51,5 @@ export class CreateShiftController {
                 return res.status(400).send("No pending shift to update.");
             }
         }
-    } */
+    }
 }

@@ -2,15 +2,34 @@ version: "3.7"
 
 services:
     postgres:
+        container_name: postgres-point
         image: postgres:latest
         ports:
             - "5432:5432"
         environment:
-            - POSTGRES_USER = admin
-            - POSTGRES_PASSWORD = admin
-            - POSTGRES_DB = point
+            - POSTGRES_USER=admin
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_DB=point
         volumes:
-            - point_pg_data:/postgres
+            - point_pg_data:/var/lib/postgres/data
+    dcs-pgadmin:
+        image: dpage/pgadmin4:latest
+        container_name: dcs-pgadmin
+        restart: always
+        depends_on:
+            - postgres
+        environment:
+            PGADMIN_DEFAULT_EMAIL: user@localhost.com
+            PGADMIN_DEFAULT_PASSWORD: password
+        ports:
+            - 8080:80
+        volumes:
+            - ./data/pgadmin:/var/lib/pgadmin
 
 volumes:
     point_pg_data:
+
+networks:
+    default:
+        name: local-network
+        external: true
