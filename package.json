@@ -1,0 +1,31 @@
+{
+    "name": "desafio-ponto-digital",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "vitest",
+        "dev": "ts-node-dev --tranpile-only src/server.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@eslint/js": "^9.8.0",
+        "@types/express": "^4.17.21",
+        "eslint": "^9.8.0",
+        "eslint-config-prettier": "^9.1.0",
+        "globals": "^15.9.0",
+        "prettier": "^3.3.3",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.0.0",
+        "vitest": "^2.0.5"
+    },
+    "dependencies": {
+        "express": "^4.19.2",
+        "pg": "^8.12.0",
+        "reflect-metadata": "^0.2.2",
+        "typeorm": "^0.3.20"
+    }
+}
