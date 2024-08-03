@@ -27,6 +27,7 @@ model Shift {
   collaborator      Collaborator @relation("CollaboratorShifts", fields: [collaboratorCode], references: [code])
   entry             DateTime     @default(now())
   exit              DateTime?
+  totalDurationMs        Int?       @map("total_duration_ms")
 
   @@map("shift")
 }

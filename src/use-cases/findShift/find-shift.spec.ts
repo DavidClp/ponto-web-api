@@ -2,6 +2,7 @@ import { expect, describe, it } from "vitest";
 import { FindShiftUserCase } from "./find-shift-user-case";
 import { CreateShiftUserCase } from "../createShift/create-shift-user-case";
 import { InMemoryShiftRepository } from "../../repositories/in-memory/in-memory-shift-repository";
+import { convertDateToUTC } from "../../utils/convertDateToUTC";
 
 describe("find Shift by CollaboratorCode And by Date", () => {
     it("deveria ser possível buscar os turnos existentes do dia", async () => {
@@ -25,8 +26,9 @@ describe("find Shift by CollaboratorCode And by Date", () => {
         expect(shifts).not.toHaveLength(0);
         expect(shifts[0]).toMatchObject({
             collaboratorCode,
-            entry,
+            entry: convertDateToUTC(entry),
             exit: null,
+            totalDurationMs: null,
         });
     });
 });
@@ -54,7 +56,7 @@ describe("find Shift by CollaboratorCode And by Month", () => {
         expect(shifts).not.toHaveLength(0);
         expect(shifts[0]).toMatchObject({
             collaboratorCode,
-            entry,
+            entry: convertDateToUTC(entry),
             exit: null,
         });
     });

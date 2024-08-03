@@ -3,6 +3,7 @@ export interface ShiftProps {
     collaboratorCode: string;
     entry: Date;
     exit: Date | null;
+    totalDurationMs: number | null;
 }
 
 export class Shift {
@@ -32,12 +33,27 @@ export class Shift {
         this.props.exit = newExit;
     }
 
-    constructor(collaboratorCode: string, entry: Date, id: number | null = null, exit: Date | null = null) {
+    set totalDurationMs(newTotalDurationMs: number | null) {
+        this.props.totalDurationMs = newTotalDurationMs;
+    }
+
+    get totalDurationMs() {
+        return this.props.totalDurationMs;
+    }
+
+    constructor(
+        collaboratorCode: string,
+        entry: Date,
+        id: number | null = null,
+        exit: Date | null = null,
+        totalDurationMs: number | null = null
+    ) {
         this.props = {
             id,
-            collaboratorCode: collaboratorCode,
-            entry: entry,
+            collaboratorCode,
+            entry,
             exit,
+            totalDurationMs,
         };
     }
 }

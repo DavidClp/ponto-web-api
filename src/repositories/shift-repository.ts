@@ -8,4 +8,10 @@ export interface ShiftRepository {
     findByCollaboratorCodeAndMonth(collaboratorCode: string, year: number, month: number): Promise<Shift[]>;
 
     findByCollaboratorCodeAndDate(collaboratorCode: string, date: Date): Promise<Shift[]>;
+
+    getTotalDurationMsByCollaboratorCodeAndMonth(
+        collaboratorCode: string,
+        year: number,
+        month: number
+    ): Promise<number>;
 }

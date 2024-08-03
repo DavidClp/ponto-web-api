@@ -1,4 +1,4 @@
-export function converterDateToUTC(date: Date): Date {
+export function convertDateToUTC(date: Date): Date {
     if (date.toISOString() === date.toISOString().substring(0, 19) + "Z") {
         return date;
     }
