@@ -32,12 +32,12 @@ export class Shift {
         this.props.exit = newExit;
     }
 
-    constructor(collaboratorCode: string, entry: Date) {
+    constructor(collaboratorCode: string, entry: Date, id: number | null = null, exit: Date | null = null) {
         this.props = {
-            id: null,
+            id,
             collaboratorCode: collaboratorCode,
             entry: entry,
-            exit: null,
+            exit,
         };
     }
 }

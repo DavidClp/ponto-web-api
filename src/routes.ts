@@ -1,10 +1,14 @@
 import { Router } from "express";
-import { createCollaborator } from "./controllers";
+import { createCollaboratorController, createShiftController } from "./controllers";
 
 const router = Router();
 
 router.post("/collaborator", (request, response) => {
-    return createCollaborator.handle(request, response);
+    return createCollaboratorController.handle(request, response);
+});
+
+router.post("/shift", (request, response) => {
+    return createShiftController.handle(request, response);
 });
 
 export { router };

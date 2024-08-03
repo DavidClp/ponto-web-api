@@ -2,18 +2,17 @@ import { Shift } from "../../entities/shift/shift";
 import { ShiftRepository } from "../shift-repository";
 
 export class InMemoryShiftRepository implements ShiftRepository {
-    private shifts: Shift[] = []; // Simulação de um banco de dados
+    public shifts: Shift[] = []; // Simulação de um banco de dados
 
     async create(shift: Shift): Promise<void> {
         this.shifts.push(shift);
     }
 
-    async update(shift: Shift): Promise<Shift> {
+    async update(shift: Shift): Promise<void> {
         const index = this.shifts.findIndex(s => s.id === shift.id);
 
         if (index > -1) {
             this.shifts[index] = shift;
-            return shift;
         }
 
         throw new Error("Turno não encontrado!");
@@ -25,7 +24,7 @@ export class InMemoryShiftRepository implements ShiftRepository {
             shift =>
                 shift.collaboratorCode === collaboratorCode &&
                 shift.entry.getFullYear() === year &&
-                shift.entry.getMonth() + 1 === month
+                shift.entry.getMonth() === month
         );
     }
 
@@ -35,7 +34,7 @@ export class InMemoryShiftRepository implements ShiftRepository {
             shift =>
                 shift.collaboratorCode === collaboratorCode &&
                 shift.entry.getFullYear() === date.getFullYear() &&
-                shift.entry.getMonth() + 1 === date.getMonth() &&
+                shift.entry.getMonth() === date.getMonth() &&
                 shift.entry.getDate() === date.getDate()
         );
     }
