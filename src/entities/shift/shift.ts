@@ -7,38 +7,42 @@ export interface ShiftProps {
 }
 
 export class Shift {
-    private props: ShiftProps;
+    private shift: ShiftProps;
 
     get id() {
-        return this.props.id;
+        return this.shift.id;
     }
 
     get collaboratorCode() {
-        return this.props.collaboratorCode;
+        return this.shift.collaboratorCode;
     }
 
     get entry() {
-        return this.props.entry;
+        return this.shift.entry;
+    }
+
+    set entry(newEntry: Date) {
+        this.shift.entry = newEntry;
     }
 
     get exit() {
-        return this.props.exit;
+        return this.shift.exit;
     }
 
     set exit(newExit: Date | null) {
-        if (newExit && newExit < this.props.entry) {
+        if (newExit && newExit < this.shift.entry) {
             throw new Error("O horário de saída não pode ser anterior ao horário de entrada!");
         }
 
-        this.props.exit = newExit;
+        this.shift.exit = newExit;
     }
 
     set totalDurationMs(newTotalDurationMs: number | null) {
-        this.props.totalDurationMs = newTotalDurationMs;
+        this.shift.totalDurationMs = newTotalDurationMs;
     }
 
     get totalDurationMs() {
-        return this.props.totalDurationMs;
+        return this.shift.totalDurationMs;
     }
 
     constructor(
@@ -48,7 +52,7 @@ export class Shift {
         exit: Date | null = null,
         totalDurationMs: number | null = null
     ) {
-        this.props = {
+        this.shift = {
             id,
             collaboratorCode,
             entry,

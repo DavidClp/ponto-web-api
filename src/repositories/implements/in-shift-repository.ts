@@ -88,7 +88,18 @@ export class InShiftRepository implements ShiftRepository {
         return totalDurationMs;
     }
 
-    private mapToShift(shift: Shift): Shift {
+    /*     private mapToShift(shift: Shift): Shift {
         return new Shift(shift.collaboratorCode, shift.entry, shift.id, shift.exit, shift.totalDurationMs);
+    }
+ */
+    private mapToShift(shift: Shift): Shift {
+        // Converta os dados do Prisma para a estrutura de dados esperada
+        return {
+            collaboratorCode: shift.collaboratorCode,
+            entry: shift.entry,
+            id: shift.id,
+            exit: shift.exit,
+            totalDurationMs: shift.totalDurationMs,
+        };
     }
 }

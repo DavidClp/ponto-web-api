@@ -1,7 +1,6 @@
 import { expect, describe, it } from "vitest";
 import { InMemoryShiftRepository } from "../../repositories/in-memory/in-memory-shift-repository";
 import { CreateShiftUserCase } from "./create-shift-user-case";
-import { convertDateToUTC } from "../../utils/convertDateToUTC";
 
 describe("Create Shift", () => {
     it("deveria ser possível criar um turno", async () => {
@@ -21,7 +20,7 @@ describe("Create Shift", () => {
         expect(shifts).toHaveLength(1);
         expect(shifts[0]).toMatchObject({
             collaboratorCode,
-            entry: convertDateToUTC(entry),
+            entry: entry,
             exit: null,
             totalDurationMs: null,
         });
