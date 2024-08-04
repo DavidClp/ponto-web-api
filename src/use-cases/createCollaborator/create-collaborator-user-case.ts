@@ -13,9 +13,14 @@ export class CreateCollaboratorUserCase {
     async execute(data: CreateCollaboratorRequest): Promise<CreateCollaboratorResponse> {
         const code = data.code;
 
-        const collaborator = new Collaborator(code);
+        const collaborator = await this.collaboratorRepository.findByCode(code);
+        if (collaborator) {
+            return collaborator;
+        }
 
-        const collaboratorCreate = await this.collaboratorRepository.create(collaborator);
+        const newCollaborator = new Collaborator(code);
+
+        const collaboratorCreate = await this.collaboratorRepository.create(newCollaborator);
 
         return collaboratorCreate;
     }

@@ -40,6 +40,9 @@ export class InShiftRepository implements ShiftRepository {
                     lt: endDate,
                 },
             },
+            orderBy: {
+                entry: "asc",
+            },
         });
 
         return shifts.map(this.mapToShift);
@@ -56,6 +59,9 @@ export class InShiftRepository implements ShiftRepository {
                     gte: startDate,
                     lt: endDate,
                 },
+            },
+            orderBy: {
+                entry: "desc",
             },
         });
 
@@ -88,12 +94,7 @@ export class InShiftRepository implements ShiftRepository {
         return totalDurationMs;
     }
 
-    /*     private mapToShift(shift: Shift): Shift {
-        return new Shift(shift.collaboratorCode, shift.entry, shift.id, shift.exit, shift.totalDurationMs);
-    }
- */
     private mapToShift(shift: Shift): Shift {
-        // Converta os dados do Prisma para a estrutura de dados esperada
         return {
             collaboratorCode: shift.collaboratorCode,
             entry: shift.entry,

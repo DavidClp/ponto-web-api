@@ -10,12 +10,12 @@ export class InMemoryShiftRepository implements ShiftRepository {
 
     async update(shift: Shift): Promise<void> {
         const index = this.shifts.findIndex(s => s.id === shift.id);
-
+        console.log("AAAA", index > -1);
         if (index > -1) {
             this.shifts[index] = shift;
+        } else {
+            throw new Error("Turno não encontrado!");
         }
-
-        throw new Error("Turno não encontrado!");
     }
 
     async findByCollaboratorCodeAndMonth(collaboratorCode: string, year: number, month: number): Promise<Shift[]> {
@@ -37,5 +37,26 @@ export class InMemoryShiftRepository implements ShiftRepository {
                 shift.entry.getMonth() === date.getMonth() &&
                 shift.entry.getDate() === date.getDate()
         );
+    }
+
+    getTotalDurationMsByCollaboratorCodeAndMonth(
+        collaboratorCode: string,
+        year: number,
+        month: number
+    ): Promise<number> {
+        // Filtra os turnos pelo código do colaborador e pelo mês
+        const shifts = this.shifts.filter(
+            shift =>
+                shift.collaboratorCode === collaboratorCode &&
+                shift.entry.getFullYear() === year &&
+                shift.entry.getMonth() === month
+        );
+
+        // Soma a duração total de todos os turnos
+        const totalDurationMs = shifts.reduce((total, shift) => {
+            return total + (shift.totalDurationMs || 0);
+        }, 0);
+
+        return Promise.resolve(totalDurationMs);
     }
 }

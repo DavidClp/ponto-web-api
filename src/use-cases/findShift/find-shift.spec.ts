@@ -2,7 +2,6 @@ import { expect, describe, it } from "vitest";
 import { FindShiftUserCase } from "./find-shift-user-case";
 import { CreateShiftUserCase } from "../createShift/create-shift-user-case";
 import { InMemoryShiftRepository } from "../../repositories/in-memory/in-memory-shift-repository";
-import { exit } from "process";
 
 describe("find Shift by CollaboratorCode And by Date", () => {
     it("deveria ser possível buscar os turnos existentes do dia", async () => {

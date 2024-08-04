@@ -4,18 +4,18 @@ export interface CollaboratorProps {
 }
 
 export class Collaborator {
-    private props: CollaboratorProps;
+    private collaborator: CollaboratorProps;
 
     get id() {
-        return this.props.id;
+        return this.collaborator.id;
     }
 
     get code() {
-        return this.props.code;
+        return this.collaborator.code;
     }
 
     constructor(code: string, id: number | null = null) {
-        this.props = {
+        this.collaborator = {
             id,
             code,
         };
