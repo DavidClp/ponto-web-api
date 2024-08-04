@@ -4,13 +4,15 @@
 
         "target": "es2016",
 
-        "module": "commonjs",
+        "module": "Node16",
 
         "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node16", // ou "nodenext"
 
         "strict": false,
 
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "skipLibCheck": true
     }
 }

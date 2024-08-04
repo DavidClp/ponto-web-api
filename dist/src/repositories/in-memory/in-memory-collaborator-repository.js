@@ -21,7 +21,6 @@ class InMemoryCollaboratorRepository {
         });
     }
     findByCode(collaboratorCode) {
-        console.log("AAAAAAAAAAAAAAAAAA", collaboratorCode);
         if (!this.collaborator)
             return null;
         if (this.collaborator.code === collaboratorCode) {

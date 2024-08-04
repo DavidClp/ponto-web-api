@@ -95,6 +95,8 @@ export class InShiftRepository implements ShiftRepository {
     }
 
     private mapToShift(shift: Shift): Shift {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         return {
             collaboratorCode: shift.collaboratorCode,
             entry: shift.entry,

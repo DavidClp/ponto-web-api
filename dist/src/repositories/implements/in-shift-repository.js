@@ -98,6 +98,8 @@ class InShiftRepository {
         });
     }
     mapToShift(shift) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         return {
             collaboratorCode: shift.collaboratorCode,
             entry: shift.entry,

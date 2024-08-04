@@ -22,7 +22,6 @@ class InMemoryShiftRepository {
     update(shift) {
         return __awaiter(this, void 0, void 0, function* () {
             const index = this.shifts.findIndex(s => s.id === shift.id);
-            console.log("AAAA", index > -1);
             if (index > -1) {
                 this.shifts[index] = shift;
             }

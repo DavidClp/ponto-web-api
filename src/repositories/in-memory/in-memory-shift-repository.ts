@@ -10,7 +10,6 @@ export class InMemoryShiftRepository implements ShiftRepository {
 
     async update(shift: Shift): Promise<void> {
         const index = this.shifts.findIndex(s => s.id === shift.id);
-        console.log("AAAA", index > -1);
         if (index > -1) {
             this.shifts[index] = shift;
         } else {

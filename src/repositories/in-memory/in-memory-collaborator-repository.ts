@@ -11,8 +11,6 @@ export class InMemoryCollaboratorRepository implements CollaboratorRepository {
     }
 
     findByCode(collaboratorCode: string): Promise<Collaborator> {
-        console.log("AAAAAAAAAAAAAAAAAA", collaboratorCode);
-
         if (!this.collaborator) return null;
 
         if (this.collaborator.code === collaboratorCode) {
